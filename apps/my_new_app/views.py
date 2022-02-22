@@ -27,7 +27,20 @@ def index(request: WSGIRequest) ->HttpResponse:
     users: QuerySet = User.objects.all()
     context = {
         'title': 'Main Page',
-        'users': users,
+        'users': users
     }
     
     return render(request, 'index.html', context)
+
+def admin(request: WSGIRequest) ->HttpResponse:
+    return render(
+        request, 
+        'admin.html',
+        context={"users":User.objects.all()} 
+    )
+
+def show(request: WSGIRequest) ->HttpResponse:
+    return render(
+        request,
+        'show.html'
+    )
